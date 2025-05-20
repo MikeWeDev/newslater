@@ -1,0 +1,55 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+
+# Create base folders
+mkdir -p app/components
+
+# Create 10 section folders under app/ and 10 component files under components/
+1..10 | ForEach-Object {
+  mkdir "app/section$_" | Out-Null
+  New-Item -Path "app/components/Section$_.tsx" -ItemType File | Out-Null
+  New-Item -Path "app/section$_/page.tsx" -ItemType File | Out-Null
+}
+
+
+
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
