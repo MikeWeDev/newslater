@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowUp, Search, Clock, Eye, MessageSquare, Share2 } from "lucide-react";
+import { ArrowUp, Clock, Eye, MessageSquare } from "lucide-react";
 
 export default function Section2() {
   return (
@@ -9,14 +9,23 @@ export default function Section2() {
       <div className="bg-black text-white flex items-center p-2 px-4 text-sm">
         <div className="text-blue-500 mr-2">⚡ Trending</div>
         <div className="border-l border-white mx-2 h-4"></div>
-        <p className="text-sm">an unknown printer took a galley of type and scrambled Newsan.</p>
+        <p className="text-sm">An unknown printer took a galley of type and scrambled Newsan.</p>
       </div>
 
       {/* Main Content */}
       <main className="flex flex-col md:flex-row px-6 py-8 gap-8">
         <div className="flex-1">
           <Card className="overflow-hidden">
-            <img src="/laptop.jpg" alt="Laptop" className="w-full object-cover h-64" />
+            <div className="relative w-full h-64">
+              <Image
+                src="/laptop.jpg"
+                alt="Laptop"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+                priority
+              />
+            </div>
             <CardContent className="p-4">
               <div className="flex items-center text-sm text-gray-500 space-x-4 mb-2">
                 <span className="flex items-center gap-1"><Clock className="w-4 h-4" />06 minute read</span>
@@ -26,7 +35,7 @@ export default function Section2() {
               </div>
               <h1 className="text-4xl font-bold mb-4">Lorem Ipsum is simply dummy text of the printing</h1>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, 
                 when an unknown printer took a galley of type and scrambled it to make a type specimen book...
               </p>
             </CardContent>
@@ -43,7 +52,15 @@ export default function Section2() {
         <aside className="w-full md:w-1/3 space-y-6">
           {[1, 2, 3, 4].map((item, i) => (
             <div key={i} className="flex gap-4">
-              <img src={`/thumb${i + 1}.jpg`} alt="thumb" className="w-24 h-20 object-cover rounded" />
+              <div className="relative w-24 h-20">
+                <Image
+                  src={`/thumb${i + 1}.jpg`}
+                  alt={`Thumbnail ${i + 1}`}
+                  fill
+                  className="object-cover rounded"
+                  sizes="96px"
+                />
+              </div>
               <div className="text-sm">
                 <p className="font-medium">Get the best speak market, news.</p>
                 <div className="text-gray-500 text-xs flex items-center gap-2 mt-1">

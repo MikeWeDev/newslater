@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { CalendarDays, Facebook, Twitter, Youtube, Linkedin } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,9 @@ export default function Section9() {
     <div className="bg-black text-white py-10 px-6 space-y-10">
       {/* Subscription */}
       <div className="flex flex-wrap items-center justify-center gap-4">
-        <h1 className="text-3xl font-bold">Newsers <span className="text-gray-400">Newspaper</span></h1>
+        <h1 className="text-3xl font-bold">
+          Newsers <span className="text-gray-400">Newspaper</span>
+        </h1>
         <div className="flex flex-1 max-w-2xl">
           <Input
             type="email"
@@ -41,11 +44,15 @@ export default function Section9() {
           <h2 className="text-lg font-bold mb-4">Recent Posts</h2>
           {["LIFE STYLE", "SPORTS"].map((category, i) => (
             <div key={i} className="flex items-start gap-3 mb-4">
-              <img
-                src="/news-10.png"
-                alt="post-thumb"
-                className="w-12 h-12 rounded-full object-cover"
-              />
+              <div className="relative w-12 h-12">
+                <Image
+                  src="/news-10.png"
+                  alt="post-thumb"
+                  fill
+                  className="object-cover rounded-full"
+                  sizes="48px"
+                />
+              </div>
               <div className="text-sm">
                 <p className="text-blue-400 font-semibold">{category}</p>
                 <p>Get the best speak market, news.</p>
@@ -72,12 +79,15 @@ export default function Section9() {
           <h2 className="text-lg font-bold mb-4">Our Gallary</h2>
           <div className="grid grid-cols-3 gap-2">
             {Array(6).fill(0).map((_, i) => (
-              <img
-                key={i}
-                src="/news-10.png"
-                alt="gallery"
-                className="w-full h-16 object-cover rounded"
-              />
+              <div key={i} className="relative w-full h-16">
+                <Image
+                  src="/news-10.png"
+                  alt="gallery"
+                  fill
+                  className="object-cover rounded"
+                  sizes="(max-width: 768px) 33vw, 100px"
+                />
+              </div>
             ))}
           </div>
         </div>

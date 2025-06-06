@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { FaClock, FaEye } from 'react-icons/fa';
+import Image from "next/image";
 
 export default function Section4() {
   return (
@@ -25,7 +24,9 @@ export default function Section4() {
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-1">
             <span className="text-yellow-500 text-xl">☀️</span>
-            <span className="text-sm">31°C NEW YORK,<br />Mon. 10 jun 2024</span>
+            <span className="text-sm">
+              31°C NEW YORK,<br />Mon. 10 jun 2024
+            </span>
           </div>
           <button className="w-10 h-10 border rounded-full flex items-center justify-center">
             🔍
@@ -46,8 +47,7 @@ export default function Section4() {
             <h2 className="text-blue-600 text-2xl font-bold mb-2">Newsers</h2>
             <h3 className="text-4xl font-bold mb-4">Get Every Weekly Updates</h3>
             <p className="text-gray-700 mb-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <input
@@ -60,13 +60,12 @@ export default function Section4() {
               </button>
             </div>
           </div>
-          <div className="w-full h-64 md:h-80 relative">
+          <div className="w-full h-64 md:h-80 relative rounded-xl overflow-hidden">
             <Image
               src="/newsers_subscription.jpg"
               alt="Subscription"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-xl"
+              fill
+              className="object-cover"
             />
           </div>
         </div>

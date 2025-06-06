@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, Sun, TrendingUp } from "lucide-react";
 
@@ -12,10 +13,13 @@ export default function Section1() {
           <span className="text-sm text-gray-400">| wsan.</span>
         </div>
         <div className="flex items-center space-x-2">
-          <img
+          <Image
             src="https://randomuser.me/api/portraits/women/1.jpg"
             alt="profile"
+            width={32}
+            height={32}
             className="h-8 w-8 rounded-full"
+            unoptimized
           />
           <span className="font-semibold">News</span>
         </div>
@@ -46,21 +50,19 @@ export default function Section1() {
 
       {/* Trending News Horizontal Scroll */}
       <div className="bg-gradient-to-r from-blue-100 to-blue-200 py-4 overflow-x-auto whitespace-nowrap px-4">
-        {[
-          "SPORTS",
-          "TECHNOLOGY",
-          "FASHION",
-          "LIFE STYLE",
-        ].map((category, index) => (
+        {["SPORTS", "TECHNOLOGY", "FASHION", "LIFE STYLE"].map((category, index) => (
           <div
             key={index}
             className="inline-block mx-2 w-40 text-left align-top"
           >
             <div className="relative w-12 h-12 rounded-full overflow-hidden">
-              <img
+              <Image
                 src={`https://randomuser.me/api/portraits/thumb/men/${index + 10}.jpg`}
                 alt=""
+                width={48}
+                height={48}
                 className="w-full h-full object-cover"
+                unoptimized
               />
               <div className="absolute top-0 right-0 bg-blue-600 text-white text-xs px-2 rounded-full">
                 3
@@ -80,10 +82,13 @@ export default function Section1() {
         <div className="md:col-span-2">
           <Card>
             <CardContent className="p-0">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
                 alt="news"
+                width={960}
+                height={384}
                 className="w-full h-96 object-cover rounded-t-lg"
+                unoptimized
               />
               <div className="p-4 text-sm text-gray-600 flex flex-wrap gap-4">
                 <span>🕒 06 minute read</span>
@@ -97,10 +102,13 @@ export default function Section1() {
         <div>
           <Card>
             <CardContent className="p-0">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1581091870622-6c1a9971cc17"
                 alt="news"
+                width={640}
+                height={192}
                 className="w-full h-48 object-cover rounded-t-lg"
+                unoptimized
               />
               <div className="p-4">
                 <h2 className="text-md font-semibold">

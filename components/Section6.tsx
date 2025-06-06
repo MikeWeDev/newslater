@@ -1,5 +1,12 @@
+import React from "react";
 import Image from "next/image";
-import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram, FaCalendarAlt } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaYoutube,
+  FaInstagram,
+  FaCalendarAlt,
+} from "react-icons/fa";
 
 export default function Section6() {
   const categories = ["Sports", "Magazine", "Politics", "Technology", "Fashion"];
@@ -101,8 +108,16 @@ export default function Section6() {
   );
 }
 
-// Button Component
-function SocialButton({ color, icon, label }: { color: string; icon: JSX.Element; label: string }) {
+// ✅ Updated type: using React.ReactNode instead of JSX.Element
+function SocialButton({
+  color,
+  icon,
+  label,
+}: {
+  color: string;
+  icon: React.ReactNode;
+  label: string;
+}) {
   return (
     <div
       className={`flex items-center justify-between text-white px-4 py-3 rounded-md ${color}`}

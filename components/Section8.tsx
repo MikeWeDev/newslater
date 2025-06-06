@@ -2,8 +2,9 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { CalendarDays } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
-export default function section8() {
+export default function Section8() {
   return (
     <div className="min-h-screen bg-white text-black px-8 py-6">
       {/* Life Style Heading */}
@@ -14,11 +15,14 @@ export default function section8() {
         {/* Left Cards */}
         <div className="flex gap-4">
           {["/news-9.png", "/news-9.png"].map((src, i) => (
-            <Card key={i} className="w-96 relative overflow-hidden">
-              <img
+            <Card key={i} className="w-96 relative overflow-hidden h-96">
+              <Image
                 src={src}
                 alt="Life Style thumbnail"
-                className="w-full h-96 object-cover rounded-xl"
+                fill
+                className="object-cover rounded-xl"
+                sizes="(max-width: 768px) 100vw, 384px"
+                priority={i === 0} // preload first image if needed
               />
               <CardContent className="absolute bottom-0 text-white p-4 bg-gradient-to-t from-black/70 to-transparent w-full">
                 <h2 className="text-lg font-semibold">
@@ -37,7 +41,16 @@ export default function section8() {
         {/* Right Sidebar */}
         <div className="w-72 space-y-6">
           <div className="flex flex-wrap gap-2">
-            {["Lifestyle", "Sports", "Politics", "Magazine", "Game", "Movie", "Travel", "World"].map((tag, i) => (
+            {[
+              "Lifestyle",
+              "Sports",
+              "Politics",
+              "Magazine",
+              "Game",
+              "Movie",
+              "Travel",
+              "World",
+            ].map((tag, i) => (
               <span
                 key={i}
                 className="px-3 py-1 rounded-full border text-sm text-gray-700 hover:bg-blue-100 cursor-pointer"
@@ -55,11 +68,15 @@ export default function section8() {
                 Shop Now
               </Button>
             </div>
-            <img
-              src="/news-9.png"
-              alt="Shop Now"
-              className="w-full h-40 object-cover"
-            />
+            <div className="relative w-full h-40">
+              <Image
+                src="/news-9.png"
+                alt="Shop Now"
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
           </div>
         </div>
       </div>

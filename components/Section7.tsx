@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { CalendarDays, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,8 @@ export default function Section7() {
         <div className="flex items-center gap-2">
           <div className="text-blue-400 font-bold">⚡ Trending</div>
           <p>
-            unknown printer took a galley of type and <span className="font-bold">scrambled Newsan</span>.
+            unknown printer took a galley of type and{" "}
+            <span className="font-bold">scrambled Newsan</span>.
           </p>
         </div>
       </div>
@@ -24,14 +26,22 @@ export default function Section7() {
         </div>
 
         <div className="flex gap-6 text-base">
-          <a href="#" className="hover:underline">Home</a>
-          <a href="#" className="hover:underline">Detail Page</a>
-          <a href="#" className="hover:underline">404 Page</a>
+          <a href="#" className="hover:underline">
+            Home
+          </a>
+          <a href="#" className="hover:underline">
+            Detail Page
+          </a>
+          <a href="#" className="hover:underline">
+            404 Page
+          </a>
           <div className="relative group">
             <button className="hover:underline">Dropdown ▼</button>
             {/* Add dropdown logic here */}
           </div>
-          <a href="#" className="hover:underline">Contact Us</a>
+          <a href="#" className="hover:underline">
+            Contact Us
+          </a>
         </div>
 
         <div className="flex items-center gap-4 text-sm text-gray-600">
@@ -40,7 +50,8 @@ export default function Section7() {
             <span>31°C</span>
           </div>
           <div>
-            NEW YORK,<br /> Mon. 10 jun 2024
+            NEW YORK,
+            <br /> Mon. 10 jun 2024
           </div>
           <div className="p-2 border rounded-full">
             <Search size={16} />
@@ -54,11 +65,16 @@ export default function Section7() {
         <div className="flex gap-4">
           {["/news-8.png", "/news-8.png"].map((src, i) => (
             <Card key={i} className="w-96">
-              <img
-                src={src}
-                alt="News thumbnail"
-                className="w-full h-60 object-cover rounded-t-xl"
-              />
+              <div className="relative w-full h-60 rounded-t-xl overflow-hidden">
+                <Image
+                  src={src}
+                  alt="News thumbnail"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 384px"
+                  priority={i === 0} // optionally preload first image
+                />
+              </div>
               <CardContent className="p-4">
                 <h2 className="text-lg font-semibold">
                   There are many variations of passages of Lorem Ipsum available,
@@ -78,16 +94,18 @@ export default function Section7() {
           {["FASHION", "LIFE STYLE"].map((category, i) => (
             <div key={i} className="border-b pb-2">
               <div className="flex gap-2 items-center">
-                <img
-                  src="/news-8.png"
-                  className="w-10 h-10 rounded-full"
-                  alt="thumb"
-                />
+                <div className="relative w-10 h-10 rounded-full overflow-hidden">
+                  <Image
+                    src="/news-8.png"
+                    alt="thumb"
+                    fill
+                    className="object-cover"
+                    sizes="40px"
+                  />
+                </div>
                 <div>
                   <div className="text-xs text-blue-500 font-semibold">{category}</div>
-                  <div className="text-sm font-medium">
-                    Get the best speak market, news.
-                  </div>
+                  <div className="text-sm font-medium">Get the best speak market, news.</div>
                   <div className="text-xs text-gray-500">December 9, 2024</div>
                 </div>
               </div>
