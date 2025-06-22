@@ -3,80 +3,98 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowUp, Clock, Eye, MessageSquare } from "lucide-react";
 
 export default function Section2() {
-  return (
-    <div className="bg-white text-black min-h-screen">
-      {/* Trending Bar */}
-      <div className="bg-black text-white flex items-center p-2 px-4 text-sm">
-        <div className="text-blue-500 mr-2">⚡ Trending</div>
-        <div className="border-l border-white mx-2 h-4"></div>
-        <p className="text-sm">An unknown printer took a galley of type and scrambled Newsan.</p>
-      </div>
+  const arr2 = [
+    { img: "/section-2/img-2.webp" },
+    { img: "/section-2/img-3.jpeg" },
+    { img: "/section-2/img-1.png" },
+    { img: "/section-2/img-5.jpg" }
+  ];
 
-      {/* Main Content */}
-      <main className="flex flex-col md:flex-row px-6 py-8 gap-8">
+  return (
+<div className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-gray-700 text-white min-h-screen py-16 overflow-hidden">
+      {/* Decorative Background Patterns */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -mt-48 w-3/4 h-96 bg-gradient-to-r from-purple-200 to-indigo-200 rounded-t-full filter blur-2xl opacity-30"></div>
+      <div className="absolute bottom-0 right-1/2 transform translate-x-1/2 mb-[-100px] w-3/4 h-96 bg-gradient-to-l from-pink-200 to-indigo-200 rounded-b-full filter blur-2xl opacity-30"></div>
+
+      <main className="relative z-10 max-w-6xl mx-auto flex flex-col lg:flex-row px-6 md:px-12 lg:px-0 gap-12">
+        {/* Featured Story */}
         <div className="flex-1">
-          <Card className="overflow-hidden">
-            <div className="relative w-full h-64">
+          <Card className="overflow-hidden rounded-2xl shadow-2xl hover:shadow-indigo-300 transition-shadow duration-300">
+            <div className="relative w-full h-80 lg:h-[28rem]">
               <Image
-                src="/laptop.jpg"
+                src="/section-2/img-4.webp"
                 alt="Laptop"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 66vw"
                 priority
               />
+              {/* Dark Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-30"></div>
             </div>
-            <CardContent className="p-4">
-              <div className="flex items-center text-sm text-gray-500 space-x-4 mb-2">
-                <span className="flex items-center gap-1"><Clock className="w-4 h-4" />06 minute read</span>
-                <span className="flex items-center gap-1"><Eye className="w-4 h-4" />3.5k Views</span>
-                <span className="flex items-center gap-1"><MessageSquare className="w-4 h-4" />05 Comment</span>
-                <span className="flex items-center gap-1"><ArrowUp className="w-4 h-4" />1.5k Share</span>
+            <CardContent className="p-8 bg-white bg-opacity-90 backdrop-blur-md text-gray-900">
+              <div className="flex flex-wrap items-center text-sm space-x-6 mb-6">
+                {[
+                  { Icon: Clock, label: "06m read" },
+                  { Icon: Eye, label: "3.5k views" },
+                  { Icon: MessageSquare, label: "05 comments" },
+                  { Icon: ArrowUp, label: "1.5k shares" }
+                ].map(({ Icon, label }, idx) => (
+                  <span key={idx} className="flex items-center gap-2 hover:text-pink-600 transition-colors">
+                    <Icon className="w-5 h-5 text-pink-600" />
+                    <span className="font-medium text-gray-800">{label}</span>
+                  </span>
+                ))}
               </div>
-              <h1 className="text-4xl font-bold mb-4">Lorem Ipsum is simply dummy text of the printing</h1>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, 
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book...
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-pink-600">
+                Lorem Ipsum is simply dummy text
+              </h1>
+              <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s…
               </p>
             </CardContent>
           </Card>
 
-          {/* Top Story section */}
-          <section className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">Top Story</h2>
-            {/* You can add more stories/cards here */}
-          </section>
+        
         </div>
 
         {/* Sidebar */}
-        <aside className="w-full md:w-1/3 space-y-6">
-          {[1, 2, 3, 4].map((item, i) => (
-            <div key={i} className="flex gap-4">
-              <div className="relative w-24 h-20">
+        <aside className="w-full lg:w-1/3 space-y-6">
+          {arr2.map((item, i) => (
+            <Card
+              key={i}
+              className="flex gap-4 p-4 items-center rounded-lg shadow-lg hover:shadow-pink-300 transition-shadow duration-300"
+            >
+              <div className="relative w-24 h-20 rounded-lg overflow-hidden flex-shrink-0">
                 <Image
-                  src={`/thumb${i + 1}.jpg`}
+                  src={item.img}
                   alt={`Thumbnail ${i + 1}`}
                   fill
-                  className="object-cover rounded"
+                  className="object-cover"
                   sizes="96px"
                 />
               </div>
-              <div className="text-sm">
-                <p className="font-medium">Get the best speak market, news.</p>
-                <div className="text-gray-500 text-xs flex items-center gap-2 mt-1">
-                  <Clock className="w-4 h-4" /> 06 minute read
-                  <Eye className="w-4 h-4 ml-3" /> 3.5k Views
+              <div className="text-sm flex-1 text-gray-200">
+                <p className="font-semibold mb-2 hover:text-indigo-200 transition-colors">
+                  Get the best speak market, news.
+                </p>
+                <div className="text-gray-300 text-xs flex items-center gap-6">
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-4 h-4 text-indigo-300" />
+                    <span>06m read</span>
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Eye className="w-4 h-4 text-indigo-300" />
+                    <span>3.5k views</span>
+                  </span>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </aside>
       </main>
 
-      {/* Scroll to top button */}
-      <div className="fixed bottom-6 right-6 bg-blue-600 text-white p-2 rounded-full shadow-lg">
-        <ArrowUp className="w-5 h-5" />
-      </div>
+    
     </div>
   );
 }

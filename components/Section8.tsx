@@ -6,26 +6,26 @@ import Image from "next/image";
 
 export default function Section8() {
   return (
-    <div className="min-h-screen bg-white text-black px-8 py-6">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 text-black px-6 md:px-12 py-10">
       {/* Life Style Heading */}
-      <h1 className="text-4xl font-bold mb-2">Life Style</h1>
-      <hr className="mb-6" />
+      <h1 className="text-4xl font-extrabold mb-2 text-gray-900">Life Style</h1>
+      <hr className="mb-8 border-gray-300" />
 
-      <div className="flex gap-4">
+      <div className="flex flex-col lg:flex-row gap-10">
         {/* Left Cards */}
-        <div className="flex gap-4">
-          {["/news-9.png", "/news-9.png"].map((src, i) => (
-            <Card key={i} className="w-96 relative overflow-hidden h-96">
+        <div className="flex flex-col md:flex-row gap-6">
+          {["/section-8/img-1.1.jpg", "/section-8/img-2.avif"].map((src, i) => (
+            <Card key={i} className="w-full md:w-96 h-96 relative overflow-hidden shadow-lg rounded-xl">
               <Image
                 src={src}
                 alt="Life Style thumbnail"
                 fill
                 className="object-cover rounded-xl"
                 sizes="(max-width: 768px) 100vw, 384px"
-                priority={i === 0} // preload first image if needed
+                priority={i === 0}
               />
-              <CardContent className="absolute bottom-0 text-white p-4 bg-gradient-to-t from-black/70 to-transparent w-full">
-                <h2 className="text-lg font-semibold">
+              <CardContent className="absolute bottom-0 w-full p-5 bg-gradient-to-t from-black/80 to-transparent text-white">
+                <h2 className="text-lg font-semibold leading-tight">
                   There are many variations of passages of Lorem Ipsum available,
                 </h2>
                 <div className="text-sm text-gray-200 mt-2 flex items-center gap-2">
@@ -39,18 +39,10 @@ export default function Section8() {
         </div>
 
         {/* Right Sidebar */}
-        <div className="w-72 space-y-6">
+        <div className="w-full lg:w-72 space-y-6">
+          {/* Tags */}
           <div className="flex flex-wrap gap-2">
-            {[
-              "Lifestyle",
-              "Sports",
-              "Politics",
-              "Magazine",
-              "Game",
-              "Movie",
-              "Travel",
-              "World",
-            ].map((tag, i) => (
+            {["Lifestyle", "Sports", "Politics", "Magazine", "Game", "Movie", "Travel", "World"].map((tag, i) => (
               <span
                 key={i}
                 className="px-3 py-1 rounded-full border text-sm text-gray-700 hover:bg-blue-100 cursor-pointer"
@@ -60,9 +52,10 @@ export default function Section8() {
             ))}
           </div>
 
+          {/* Promo Card */}
           <div className="rounded-xl overflow-hidden shadow border">
             <div className="bg-gradient-to-b from-blue-400 to-blue-600 p-4 text-white text-center">
-              <div className="text-sm font-semibold">The Most Populer</div>
+              <div className="text-sm font-semibold">The Most Popular</div>
               <div className="text-lg font-bold mb-4">News & Magazine WP Theme</div>
               <Button className="bg-white text-blue-600 font-bold px-6 py-2 rounded-full">
                 Shop Now
@@ -70,7 +63,7 @@ export default function Section8() {
             </div>
             <div className="relative w-full h-40">
               <Image
-                src="/news-9.png"
+                src="/section-8/img-3.webp"
                 alt="Shop Now"
                 fill
                 className="object-cover"
@@ -79,16 +72,6 @@ export default function Section8() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Floating button */}
-      <button className="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg">
-        ↑
-      </button>
-
-      {/* Footer weather */}
-      <div className="fixed bottom-0 left-0 w-full bg-white border-t text-xs text-right p-2 pr-4">
-        🌤 23°C Partly sunny — <span className="text-gray-500">9:04 PM — 5/20/2025</span>
       </div>
     </div>
   );

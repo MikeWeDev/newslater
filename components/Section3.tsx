@@ -1,106 +1,66 @@
 import Image from 'next/image';
-import { FaClock, FaEye } from 'react-icons/fa';
+import { Card, CardContent } from '@/components/ui/card';
+import { ArrowUp, Clock, Eye, MessageSquare } from 'lucide-react';
+
+const sidebarData = [
+  { img: '/section-3/img-2.jpg', title: 'Global Economy Shift', time: '5m read', views: '2.1k' },
+  { img: '/section-3/img-3.avif', title: 'Tech Giants Merge', time: '4m read', views: '1.8k' },
+  { img: '/section-3/img-4.jpg', title: 'Health Breakthroughs', time: '6m read', views: '3.2k' },
+];
 
 export default function Section3() {
   return (
-    <div className="min-h-screen bg-white text-black">
-      {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 shadow-md">
-        <div className="text-blue-600 text-3xl font-bold">
-          Newsers <span className="text-gray-600 text-base font-light">Nespaper</span>
-        </div>
-        <nav className="space-x-6 text-gray-700 hidden md:block">
-          <a href="#" className="hover:underline">Home</a>
-          <a href="#" className="hover:underline">Detail Page</a>
-          <a href="#" className="hover:underline">404 Page</a>
-          <div className="inline-block relative group">
-            <button className="hover:underline">Dropdown</button>
-            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2 py-2 px-4">
-              <a href="#" className="block hover:bg-gray-100">Option 1</a>
-              <a href="#" className="block hover:bg-gray-100">Option 2</a>
-            </div>
-          </div>
-          <a href="#" className="hover:underline">Contact Us</a>
-        </nav>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1">
-            <span className="text-yellow-500 text-xl">☀️</span>
-            <span className="text-sm">31°C NEW YORK,<br />Mon. 10 jun 2024</span>
-          </div>
-          <button className="w-10 h-10 border rounded-full flex items-center justify-center">
-            🔍
-          </button>
-        </div>
-      </header>
-
-      {/* Trending Bar */}
-      <div className="bg-black text-white px-6 py-2 flex items-center space-x-2 text-sm">
-        <span className="text-blue-500 font-bold">⚡ Trending</span>
-        <span>| an.</span>
-      </div>
-
+    <div className="relative bg-gradient-to-br from-gray-100 via-white to-gray-50 min-h-screen py-16 overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-blue-200 rounded-full filter blur-2xl opacity-30 -ml-32 -mt-32"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-200 rounded-full filter blur-2xl opacity-30 mr-[-40px] mb-[-40px]"></div>
       {/* Main Content */}
-      <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        {/* Top Story */}
-        <div className="lg:col-span-2 bg-gray-50 p-6 rounded shadow">
-          <h2 className="text-xl font-bold mb-4">Top Story</h2>
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="w-full md:w-1/2 h-60 relative">
-              <Image
-                src="/newsers_top_story.jpg"
-                alt="Top Story Image"
-                layout="fill"
-                objectFit="cover"
-                className="rounded"
-              />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-2xl font-semibold">
-                Stoneman Clandestine Ukrainian claims successes against Russian.
-              </h3>
-              <div className="flex items-center space-x-4 mt-4 text-gray-500">
-                <span className="flex items-center space-x-1">
-                  <FaClock /> <span>06 minute read</span>
-                </span>
-                <span className="flex items-center space-x-1">
-                  <FaEye /> <span>3.5k Views</span>
-                </span>
-              </div>
-            </div>
+      <main className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 px-6 md:px-12">
+        {/* Top Story Card */}
+        <Card className="lg:col-span-2 shadow-2xl hover:shadow-indigo-300 transition-shadow rounded-2xl overflow-hidden">
+          <div className="relative w-full h-80">
+            <Image
+              src="/section-3/img-1.avif"
+              alt="Top Story"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-30"></div>
           </div>
-        </div>
+          <CardContent className="p-6 bg-white bg-opacity-90 backdrop-blur-sm">
+            <h2 className="text-2xl font-extrabold mb-4">Stoneman Clandestine Ukrainian Succeses</h2>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Discover how the clandestine operations are reshaping the regional balance of power with surprising results.
+            </p>
+            <div className="flex items-center space-x-6 text-gray-600 text-sm">
+              <span className="flex items-center gap-1"><Clock className="w-5 h-5"/>06 min read</span>
+              <span className="flex items-center gap-1"><Eye className="w-5 h-5"/>3.5k views</span>
+            </div>
+          </CardContent>
+        </Card>
 
-        {/* Sidebar News */}
-        <div className="space-y-4">
-          {[1, 2, 3].map((item) => (
-            <div key={item} className="flex items-start space-x-4">
-              <div className="w-20 h-20 bg-gray-300 rounded overflow-hidden relative">
-                <Image
-                  src="/newsers_sidebar.jpg"
-                  alt="Sidebar News"
-                  layout="fill"
-                  objectFit="cover"
-                />
+        {/* Sidebar List */}
+        <aside className="space-y-6">
+          {sidebarData.map((item,i)=>(
+            <div key={i} className="flex items-start bg-white bg-opacity-80 rounded-xl shadow-lg hover:shadow-pink-300 transition-shadow p-4">
+              <div className="relative w-24 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                <Image src={item.img} alt={item.title} fill className="object-cover" />
               </div>
-              <div className="flex-1">
-                <h4 className="font-semibold">Get the best speak market, news.</h4>
-                <div className="flex items-center space-x-4 text-gray-500 text-sm">
-                  <span className="flex items-center space-x-1">
-                    <FaClock /> <span>06 minute read</span>
-                  </span>
-                  <span className="flex items-center space-x-1">
-                    <FaEye /> <span>3.5k Views</span>
-                  </span>
+              <div className="ml-4">
+                <h3 className="font-semibold text-lg hover:text-indigo-600 transition">{item.title}</h3>
+                <div className="flex items-center space-x-4 text-gray-600 text-xs mt-2">
+                  <span className="flex items-center gap-1"><Clock className="w-4 h-4"/>{item.time}</span>
+                  <span className="flex items-center gap-1"><Eye className="w-4 h-4"/>{item.views} views</span>
                 </div>
               </div>
             </div>
           ))}
-        </div>
+        </aside>
       </main>
 
-      {/* Scroll to Top Button */}
-      <button className="fixed bottom-6 right-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg text-2xl flex items-center justify-center">
-        ↑
+      {/* Scroll to Top */}
+      <button className="fixed bottom-8 right-8 bg-indigo-600 text-white p-4 rounded-full shadow-xl hover:scale-110 transition-all">
+        <ArrowUp className="w-6 h-6"/>
       </button>
     </div>
   );
